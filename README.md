@@ -1,38 +1,21 @@
 # Landing Page Template
 
-A reusable single-page landing template for CLI tools and developer projects. Built with plain HTML + CSS, using CSS variables for easy theming. Minimal JavaScript for tabs and scroll spy only.
+A single-page landing template for side projects. Plain HTML + CSS with CSS variables for theming. No build step required.
 
-## Philosophy & Design Principles
+## Why This Exists
 
-### Why This Template Exists
+I build a lot of side projects—CLI tools, libraries, experiments, things that scratch an itch or make my life easier. Most of them end up on GitHub, and I wanted a simple way to give them a proper landing page: something that looks decent, has a quick start section people can actually follow, and maybe a demo video.
 
-This template provides a consistent, professional landing page for open source projects. It's designed to be:
+What I didn't want: yet another build system to maintain, dependencies to update, or a static site generator that needs its own config files. Just HTML and CSS that I can drop into a `docs/` folder, push to GitHub Pages, and forget about.
 
-1. **Self-contained** - Copy the folder, edit the content, deploy. No build step required.
-2. **Themeable** - Change colors and fonts in one file (`theme.css`) without touching other CSS.
-3. **Maintainable** - CSS is split into logical layers with clear responsibilities.
-4. **Accessible** - Semantic HTML, focus states, sufficient contrast, screen reader support.
-5. **Performant** - Minimal JavaScript, system fonts by default.
+## tl;dr
 
-### Design Decisions (For the base template)
-
-- **Dark theme by default** - Matches developer tool aesthetics; easy to convert to light theme via CSS variables.
-- **Show, don't tell** - Demo video comes early, before detailed explanations.
-- **Minimal section titles** - Content flows naturally without heavy headers.
-- **Accent colors** - Purple accents on hero title, code blocks, and interactive elements.
-- **Retina-ready video** - 2x resolution video displayed at half size for crisp rendering.
-- **System fonts** - Fast loading, native look; can be swapped for custom fonts.
-
-### Page Flow
-
-```
-Hero          →  Name/logo, tagline, CTA buttons
-Highlights    →  3 key value props (no section title)
-Demo          →  Video in macOS window frame
-Quick Start   →  Tabbed installation methods + usage examples
-Documentation →  Options table, examples, config
-Footer        →  Tagline, credit, imprint link
-```
+- Plain HTML + CSS, no build step — copy, edit, deploy
+- Theming via CSS variables in `theme.css`, content in `index.html`
+- CSS split into layers: base, components, layout, utilities
+- Minimal JavaScript for tabs and scroll spy only
+- Dark theme and system fonts by default
+- Page sections: hero → highlights → demo video → quick start (tabbed) → documentation → footer — remove or reorder as needed
 
 ## File Structure
 
@@ -82,7 +65,7 @@ cp -r vhs/ my-project/docs/
 
 ### Step 2: Customize the Theme
 
-Edit `template/styles/theme.css` to match your project's brand:
+Edit `template/styles/theme.css` to match your project:
 
 ```css
 :root {
@@ -100,8 +83,8 @@ Edit `template/index.html` and replace all placeholder content:
 1. **`<title>` and meta description** - For SEO
 2. **Navbar brand** - Choose text-only or logo+text option
 3. **Hero section** - Choose logo option, update name and tagline
-4. **Highlights** - Your three key value propositions
-5. **Demo video** - Replace with your terminal recording
+4. **Highlights** - Your key features
+5. **Demo video** - Replace with your demo recording
 6. **Quick Start tabs** - Your installation methods
 7. **Documentation** - Your CLI options and examples
 8. **Footer** - Your tagline, name, and links

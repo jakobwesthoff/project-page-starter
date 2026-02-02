@@ -2,6 +2,17 @@
 
 Quick reference for AI agents working with this landing page template.
 
+## Page Structure
+
+```
+Hero          →  Name/logo, tagline, CTA buttons
+Highlights    →  3 key value props (no section title)
+Demo          →  Video in macOS window frame
+Quick Start   →  Tabbed installation methods + usage examples
+Documentation →  Options table, examples, config
+Footer        →  Tagline, credit, imprint link
+```
+
 ## File Overview
 
 | Task | File to Edit |
