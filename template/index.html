@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Name - Short tagline here</title>
+  <meta name="description" content="A brief description of your project for search engines and social sharing.">
+
+  <!-- Prism.js syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- CSS imports in dependency order -->
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+  <link rel="stylesheet" href="styles/layout.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <!-- OPTION 1: Text only (default) -->
+      <a href="#" class="navbar-brand">
+        <span>Project Name</span>
+      </a>
+
+      <!-- OPTION 2: Logo + Text - uncomment and remove Option 1
+      <a href="#" class="navbar-brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span>Project Name</span>
+      </a>
+      -->
+
+      <ul class="navbar-nav">
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#quickstart">Quick Start</a></li>
+        <li><a href="#docs">Docs</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <a href="https://github.com/username/project" class="btn btn-secondary btn-sm">
+          <svg class="icon-github" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="#quickstart" class="btn btn-primary btn-sm">
+          <svg class="icon-download" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <!-- OPTION 1: Text only (default) -->
+        <h1>Project Name</h1>
+
+        <!-- OPTION 2: Logo + Text - uncomment and remove Option 1
+        <div class="hero-logo">
+          <img src="assets/logo.svg" alt="Project Name logo" class="hero-logo-img">
+        </div>
+        <h1>Project Name</h1>
+        -->
+
+        <!-- OPTION 3: Combined logo (SVG with integrated text) - uncomment and remove Option 1
+        <div class="hero-logo">
+          <img src="assets/logo-full.svg" alt="Project Name" class="hero-logo-full">
+        </div>
+        -->
+        <p class="hero-tagline">
+          A one-line description of what your project does and why it's awesome.
+        </p>
+        <div class="hero-actions">
+          <a href="#quickstart" class="btn btn-primary btn-lg">
+            <svg class="icon-download" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+          <a href="https://github.com/username/project" class="btn btn-secondary btn-lg">
+            <svg class="icon-github" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights - key value props, no section title -->
+    <section class="highlights">
+      <div class="container">
+        <div class="highlights-grid">
+          <div class="highlight">
+            <h3>Fast & Lightweight</h3>
+            <p>Built for speed. No bloat, no unnecessary dependencies.</p>
+          </div>
+          <div class="highlight">
+            <h3>Simple to Use</h3>
+            <p>Intuitive interface. Get started in seconds, not hours.</p>
+          </div>
+          <div class="highlight">
+            <h3>Fully Offline</h3>
+            <p>No accounts, no tracking. Your data stays on your machine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+      <div class="container">
+        <!-- Add "retina" class for HiDPI: records video at 2x, displays at half size for crisp rendering -->
+        <div class="demo-window">
+          <div class="macos-window">
+            <div class="macos-window-titlebar">
+              <div class="macos-window-buttons">
+                <span class="macos-window-button close"></span>
+                <span class="macos-window-button minimize"></span>
+                <span class="macos-window-button maximize"></span>
+              </div>
+              <span class="macos-window-title">Terminal</span>
+            </div>
+            <div class="macos-window-content">
+              <!-- Replace with your demo video -->
+              <video autoplay loop muted playsinline>
+                <source src="assets/demo.webm" type="video/webm">
+                <source src="assets/demo.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                <div class="code-block" style="margin: 0; border: none; border-radius: 0;">
+                  <pre><code class="language-bash">$ project-name --help
+Usage: project-name [OPTIONS] &lt;input&gt;
+
+Options:
+  -o, --output &lt;path&gt;  Output directory
+  -v, --verbose        Enable verbose output
+  -h, --help           Print help
+
+$ project-name input.txt -o output/
+Processing input.txt...
+Done!</code></pre>
+                </div>
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quickstart" class="quickstart">
+      <div class="container">
+        <div class="quickstart-content">
+          <h2>Quick Start</h2>
+
+          <div class="tabs">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="homebrew">Homebrew</button>
+              <button class="tab-button" data-tab="cargo">Cargo</button>
+              <button class="tab-button" data-tab="binary">Binary</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel active" data-tab="homebrew">
+                <div class="code-block">
+                  <pre><code class="language-bash">brew install project-name</code></pre>
+                </div>
+              </div>
+              <div class="tab-panel" data-tab="cargo">
+                <div class="code-block">
+                  <pre><code class="language-bash">cargo install project-name</code></pre>
+                </div>
+              </div>
+              <div class="tab-panel" data-tab="binary">
+                <div class="code-block">
+                  <pre><code class="language-bash">curl -fsSL https://github.com/username/project/releases/latest/download/install.sh | sh</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Quick Start</h3>
+          <div class="code-block">
+            <pre><code class="language-bash"># Basic usage
+project-name input.txt
+
+# With options
+project-name input.txt --output ./results --verbose</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="docs">
+      <div class="container">
+        <div class="docs-content">
+          <h2>Documentation</h2>
+
+          <h3>Options</h3>
+          <div class="docs-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Description</th>
+                  <th>Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>-o, --output &lt;path&gt;</code></td>
+                  <td>Specify output directory</td>
+                  <td>Current directory</td>
+                </tr>
+                <tr>
+                  <td><code>-v, --verbose</code></td>
+                  <td>Enable verbose logging</td>
+                  <td>Off</td>
+                </tr>
+                <tr>
+                  <td><code>-c, --config &lt;file&gt;</code></td>
+                  <td>Use custom config file</td>
+                  <td>~/.config/project/config.toml</td>
+                </tr>
+                <tr>
+                  <td><code>-q, --quiet</code></td>
+                  <td>Suppress all output</td>
+                  <td>Off</td>
+                </tr>
+                <tr>
+                  <td><code>-h, --help</code></td>
+                  <td>Print help information</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Examples</h3>
+          <div class="code-block">
+            <pre><code class="language-bash"># Process a single file
+project-name document.txt
+
+# Custom output location
+project-name document.txt --output ~/Documents/results
+
+# Verbose mode for debugging
+project-name document.txt --verbose
+
+# Using a config file
+project-name document.txt --config my-config.toml</code></pre>
+          </div>
+
+          <h3>Configuration</h3>
+          <p>
+            Create a configuration file at <code>~/.config/project/config.toml</code>:
+          </p>
+          <div class="code-block">
+            <pre><code class="language-toml"># config.toml
+output_dir = "~/Documents/output"
+verbose = false
+max_threads = 4</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-tagline">Your project tagline or slogan here</p>
+        <p class="footer-credit">
+          Made with <span class="footer-heart">&hearts;</span> by
+          <a href="https://yourwebsite.com">Your Name</a> |
+          <!-- Imprint required by German law (§ 5 TMG) - optional elsewhere, remove if not needed -->
+          <a href="imprint.html">Imprint/Impressum</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Prism.js syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js" integrity="sha512-HiD3V4nv8fcjtouznjT9TqDNDm1EXngV331YGbfVGeKUoH+OLkRTCMzA34ecjlgSQZpdHZupdSrqHY+Hz3l6uQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-bash.min.js" integrity="sha512-whYhDwtTmlC/NpZlCr6PSsAaLOrfjVg/iXAnC4H/dtiHawpShhT2SlIMbpIhT/IL/NrpdMm+Hq2C13+VKpHTYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-toml.min.js" integrity="sha512-R9JG7uVdcjWlZvEWyP3KfxtexvT1uIlKUF/dYVmZRbvJyMobK6zGCpIM2gLVqYjLSYeL/zBjOVpP7vXxVtzfCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Tab switching -->
+  <script>
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tab = button.dataset.tab;
+        const tabs = button.closest('.tabs');
+        tabs.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        tabs.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        button.classList.add('active');
+        tabs.querySelector(`.tab-panel[data-tab="${tab}"]`).classList.add('active');
+      });
+    });
+
+    // Scroll spy for navbar
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    const navbar = document.querySelector('.navbar');
+    // Extra 16px buffer makes sections activate slightly early for snappier feel
+    const navOffset = navbar.offsetHeight + 16;
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + navOffset;
+      let currentSection = null;
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (currentSection && link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+  </script>
+</body>
+</html>
