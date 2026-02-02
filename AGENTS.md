@@ -133,6 +133,11 @@ Key colors to sync:
 - Optional elsewhere - remove footer link if not needed
 - Contains placeholder address - must be replaced with real info
 - Has bilingual disclaimer comment (EN/DE) about being a template
+- **Contact obfuscation**: Phone/email are encrypted to deter simple bot scraping
+  - Only protects against bots that don't execute JavaScript
+  - See inline comment in `template/imprint.html` for key generation instructions
+  - Uses XOR with ROT13-encoded key and base64 encoding
+  - Requires JavaScript to display (noscript fallback included)
 
 ## Common Tasks
 
