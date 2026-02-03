@@ -23,6 +23,7 @@ Footer        →  Tagline, credit, imprint link
 | Add UI components | `template/styles/components.css` |
 | Add utility classes | `template/styles/utilities.css` |
 | Update legal info | `template/imprint.html` |
+| Change favicon colors | `template/favicon.svg` |
 | Record demo video | `vhs/demo.tape` |
 
 ## Content Placeholders to Replace
@@ -155,6 +156,10 @@ Key colors to sync:
    "magenta": "#NEW_COLOR", "brightMagenta": "#LIGHTER_SHADE"
    ```
 
+3. Update favicon colors in `template/favicon.svg`:
+   - `id="top"` → lighter color (primary)
+   - `id="bottom"` → darker color (primary-hover)
+
 ### Add a New Section
 
 1. Add HTML in `template/index.html` after existing sections
@@ -180,6 +185,7 @@ Delete from footer in `template/index.html`:
 
 After customizing, verify:
 
+- [ ] Favicon colors match theme (`template/favicon.svg`)
 - [ ] All "Project Name" placeholders replaced
 - [ ] All GitHub URLs updated (`username/project`)
 - [ ] All code examples match actual CLI

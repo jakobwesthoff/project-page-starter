@@ -55,6 +55,34 @@ All colors, fonts, and spacing are defined as CSS variables in `template/styles/
 }
 ```
 
+## Favicon
+
+The template includes a base favicon at `template/favicon.svg`. This SVG favicon features a two-tone background with a letter design.
+
+### Customizing Colors
+
+**Important**: When using this template, always update the favicon colors to match your project's color scheme.
+
+The favicon has two colored regions:
+- **Top** (`id="top"`): Should use your primary/lighter color
+- **Bottom** (`id="bottom"`): Should use your darker color variant
+
+Edit the `fill` style attribute in each `<path>` element:
+
+```svg
+<!-- Top - lighter color -->
+<g id="top" ...>
+  <path ... style="fill:#7c3aed;"/>
+</g>
+
+<!-- Bottom - darker color -->
+<g id="bottom" ...>
+  <path ... style="fill:#6d28d9;"/>
+</g>
+```
+
+The letter color (`id="letter"`) is dark gray (`rgb(39,39,43)`) and generally works well with most color schemes.
+
 ### Converting to Light Theme
 
 Change the background and text variables:
