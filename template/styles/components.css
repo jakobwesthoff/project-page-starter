@@ -145,6 +145,19 @@ code[class*="language-"] {
   border-radius: 0;
 }
 
+@media (max-width: 640px) {
+  .tab-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* Feature Box */
 .feature-box {
   background-color: var(--color-bg-card);
