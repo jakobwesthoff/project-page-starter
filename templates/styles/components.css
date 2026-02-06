@@ -66,6 +66,8 @@
   border-left: 3px solid var(--color-primary);
   border-radius: var(--border-radius);
   padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
   overflow-x: auto;
 }
 
@@ -178,6 +180,7 @@ code[class*="language-"] {
 
 .feature-box h3 {
   font-size: 1.25rem;
+  margin-top: 0;
   margin-bottom: var(--space-sm);
 }
 
@@ -272,6 +275,21 @@ code[class*="language-"] {
 
 .table code {
   font-size: 0.85em;
+}
+
+/* Docs Table wrapper */
+.docs-table {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.docs-table .table th,
+.docs-table .table td {
+  padding: var(--space-md);
 }
 
 /* GitHub Icon (inline SVG) */

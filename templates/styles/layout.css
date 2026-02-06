@@ -109,7 +109,6 @@
 .hero h1 {
   font-size: 3.5rem;
   font-weight: 700;
-  margin-bottom: var(--space-md);
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, var(--color-text-bright) 0%, var(--color-primary) 100%);
   -webkit-background-clip: text;
@@ -133,7 +132,7 @@
 .hero-tagline {
   font-size: 1.25rem;
   color: var(--color-text-muted);
-  max-width: 600px;
+  max-width: min(var(--container-max), 700px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space-xl);
@@ -194,6 +193,7 @@
 
 .highlight h3 {
   font-size: 1.125rem;
+  margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
   color: var(--color-text-bright);
 }
@@ -230,55 +230,11 @@
   padding-bottom: var(--space-2xl);
 }
 
-.quickstart h2 {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-}
-
-.quickstart h3 {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
-}
-
 /* Documentation Section */
 .docs {
   padding-top: var(--space-2xl);
   padding-bottom: var(--space-2xl);
   background-color: var(--color-bg-alt);
-}
-
-.docs h2 {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-}
-
-.docs h3 {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
-}
-
-.docs p {
-  color: var(--color-text-muted);
-}
-
-.docs .code-block + p,
-.docs .callout-box + p,
-.docs .docs-table + p {
-  margin-top: var(--space-lg);
-}
-
-.docs-table {
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-lg);
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-}
-
-.docs-table .table th,
-.docs-table .table td {
-  padding: var(--space-md);
 }
 
 /* Imprint Page */
@@ -292,8 +248,7 @@
 }
 
 .imprint h2 {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
+  text-align: left;
   font-size: 1.5rem;
 }
 
@@ -301,10 +256,6 @@
   margin-top: var(--space-lg);
   margin-bottom: var(--space-sm);
   font-size: 1.125rem;
-}
-
-.imprint p {
-  color: var(--color-text-muted);
 }
 
 /* Footer */
@@ -322,16 +273,18 @@
   gap: var(--space-sm);
 }
 
+.footer-content p {
+  margin-bottom: 0;
+}
+
 .footer-tagline {
   color: var(--color-text-muted);
   font-size: 0.875rem;
-  margin-bottom: 0;
 }
 
 .footer-credit {
   color: var(--color-text-muted);
   font-size: 0.875rem;
-  margin-bottom: 0;
 }
 
 .footer-credit a {
