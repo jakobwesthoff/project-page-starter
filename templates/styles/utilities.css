@@ -10,6 +10,10 @@
   padding-right: var(--space-md);
 }
 
+.container > h2:first-child {
+  margin-top: 0;
+}
+
 /* Grid */
 .grid {
   display: grid;

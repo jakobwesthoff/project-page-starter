@@ -132,7 +132,7 @@
 .hero-tagline {
   font-size: 1.25rem;
   color: var(--color-text-muted);
-  max-width: min(var(--container-max), 700px);
+  max-width: min(var(--container-max), 600px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space-xl);
