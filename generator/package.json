@@ -1,0 +1,23 @@
+{
+  "name": "project-page-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "bun run bin/generate.ts",
+    "typecheck": "bunx tsc --noEmit"
+  },
+  "dependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.31.1",
+    "linkedom": "^0.18.12",
+    "marked": "^11.0.0",
+    "nunjucks": "^3.2.4",
+    "shiki": "^1.0.0",
+    "yaml": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.8",
+    "@types/html-minifier-terser": "^7.0.2",
+    "@types/nunjucks": "^3.2.6"
+  }
+}

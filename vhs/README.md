@@ -20,7 +20,7 @@ vhs demo.tape
 After recording, copy the video files to the template assets:
 
 ```bash
-cp demo.webm demo.mp4 ../template/assets/
+cp demo.webm demo.mp4 ../docs/assets/
 ```
 
 ## Configuration
@@ -45,7 +45,7 @@ The tape includes a custom theme matching the landing page colors:
 Set Theme { "name": "LandingPage", "background": "#0f0f14", "foreground": "#e5e5e5", "magenta": "#7c3aed", ... }
 ```
 
-**Important**: If you change colors in `template/styles/theme.css`, update the VHS theme to match:
+**Important**: If you change colors in `docs/theme.css`, update the VHS theme to match:
 
 | CSS Variable | VHS Theme Key |
 |--------------|---------------|

@@ -1,0 +1,32 @@
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="#" class="navbar-brand">
+      <span>{{ config.name }}</span>
+    </a>
+
+    <ul class="navbar-nav">
+      {% for section in config.sections %}
+        {% if section.nav %}
+          <li><a href="#{{ section.id }}">{{ section.nav_label }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="navbar-actions">
+      {% for button in config.navbar_buttons %}
+        <a href="{{ button.href }}" class="btn btn-{{ button.style or 'secondary' }} btn-sm">
+          {% if button.icon %}<i data-icon="{{ button.icon }}"></i>{% endif %}
+          {{ button.label }}
+        </a>
+      {% endfor %}
+      {# Fallback: show GitHub button if no navbar_buttons defined #}
+      {% if not config.navbar_buttons %}
+        <a href="https://github.com/{{ config.github }}" class="btn btn-secondary btn-sm">
+          <i data-icon="github"></i>
+          GitHub
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

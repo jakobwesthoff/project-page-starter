@@ -77,7 +77,8 @@
   color: var(--color-text);
 }
 
-/* Prism.js overrides - match our theme */
+/* Syntax highlighting overrides - match our theme */
+/* Works with both Prism.js and Shiki output */
 .code-block pre[class*="language-"],
 .code-block code[class*="language-"] {
   background: none;
@@ -87,6 +88,10 @@ pre[class*="language-"],
 code[class*="language-"] {
   background: var(--color-bg-code);
 }
+
+/* Shiki highlighting - spans have inline color styles */
+/* Note: .line elements are NOT display:block because <pre> preserves whitespace
+   and Shiki includes actual newlines between lines */
 
 /* Tabs */
 .tabs {

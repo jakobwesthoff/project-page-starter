@@ -1,0 +1,26 @@
+{% extends "base.njk" %}
+
+{% block content %}
+  {# Navbar generated from config.sections where nav: true #}
+  {% include "partials/navbar.njk" %}
+
+  <main>
+    {# Render each section in order (includes footer) #}
+    {% for section in sections %}
+      {% if section.source == "readme" %}
+        <section id="{{ section.id }}" class="docs">
+          <div class="container">
+            {{ section.html | safe }}
+          </div>
+        </section>
+      {% else %}
+        {{ section.html | safe }}
+      {% endif %}
+    {% endfor %}
+  </main>
+{% endblock %}
+
+{% block scripts %}
+  <script type="module">{% include "scripts/tabs.js" %}</script>
+  <script type="module">{% include "scripts/scroll-spy.js" %}</script>
+{% endblock %}

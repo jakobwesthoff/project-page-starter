@@ -117,6 +117,19 @@
   background-clip: text;
 }
 
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.hero-subtitle-highlight {
+  font-weight: 700;
+  color: var(--color-text-bright);
+}
+
 .hero-tagline {
   font-size: 1.25rem;
   color: var(--color-text-muted);
@@ -147,6 +160,10 @@
     font-size: 2.5rem;
   }
 
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
   .hero-tagline {
     font-size: 1.125rem;
   }
@@ -162,9 +179,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .highlight {
@@ -209,23 +223,11 @@
   background-color: var(--color-bg-alt);
 }
 
-.demo-window {
-  /* Video is 2400px wide, constrain for layout. Adjust as needed. */
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* Install Section */
 .quickstart {
   padding-top: var(--space-2xl);
   padding-bottom: var(--space-2xl);
-}
-
-.quickstart-content {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .quickstart h2 {
@@ -243,12 +245,6 @@
   padding-top: var(--space-2xl);
   padding-bottom: var(--space-2xl);
   background-color: var(--color-bg-alt);
-}
-
-.docs-content {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .docs h2 {
@@ -293,12 +289,6 @@
 .imprint {
   padding-top: calc(64px + var(--space-2xl));
   padding-bottom: var(--space-2xl);
-}
-
-.imprint-content {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .imprint h1 {
