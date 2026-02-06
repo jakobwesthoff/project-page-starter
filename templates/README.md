@@ -1,6 +1,6 @@
 # Templates
 
-Nunjucks templates and static assets used by the generator. These are the generator's source files — you don't edit them directly. Customize your site via `docs/theme.css` and `docs/sections/`.
+Nunjucks templates and static assets used by the generator. These are the generator's source files — you don't edit them directly. Customize your site via `docs/pages/theme.css` and `docs/pages/sections/`.
 
 ## Contents
 

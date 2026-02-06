@@ -25,7 +25,7 @@ on:
     branches: [main]
     paths:
       - 'README.md'
-      - 'docs/**'
+      - 'docs/pages/**'
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
@@ -68,14 +68,10 @@ jobs:
       - name: Generate pages
         run: |
           bun run generator/generator/bin/generate.ts \
-            --docs project/docs \
+            --docs project/docs/pages \
             --readme project/README.md \
             --output dist \
             --templates generator/templates
-
-      # Copy project assets (demo videos, images, etc.)
-      - name: Copy project assets
-        run: cp -r project/docs/assets/* dist/assets/ 2>/dev/null || true
 
       # Setup GitHub Pages
       - name: Setup Pages
@@ -106,20 +102,18 @@ After adding the workflow file, enable GitHub Pages in the repository:
 1. Go to **Settings > Pages**
 2. Under "Build and deployment", select **GitHub Actions** as the source
 
-The workflow triggers on pushes to `main` that modify `README.md` or anything in `docs/`. It can also be triggered manually via `workflow_dispatch`.
+The workflow triggers on pushes to `main` that modify `README.md` or anything in `docs/pages/`. It can also be triggered manually via `workflow_dispatch`.
 
 ## How It Works
 
 1. Checks out the target project into `project/`
 2. Checks out `jakobwesthoff/project-page-starter` into `generator/`
 3. Installs Bun and generator dependencies
-4. Runs the generator: reads `project/docs/` config + sections + `project/README.md`, outputs to `dist/`
-5. Copies any assets from `project/docs/assets/` into `dist/assets/`
-6. Uploads `dist/` as a GitHub Pages artifact and deploys
+4. Runs the generator: reads `project/docs/pages/` config + sections + `project/README.md`, outputs to `dist/` (including copying assets)
+5. Uploads `dist/` as a GitHub Pages artifact and deploys
 
 ## Anti-Patterns
 
 - NEVER modify the generator checkout path — it MUST be `generator` (the install and generate steps depend on this path)
 - MUST NOT change the repository reference from `jakobwesthoff/project-page-starter`
-- NEVER skip the "Copy project assets" step — demo videos and images won't appear without it
 - NEVER change the project checkout path from `project` — all subsequent steps reference this path

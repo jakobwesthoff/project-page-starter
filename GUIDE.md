@@ -14,23 +14,24 @@ You describe your page in a `config.yaml` file, write each section as a standalo
 
 ## Setting Up Your Project
 
-Start by creating a `docs/` directory in your project with this structure:
+Start by creating a `docs/pages/` directory in your project with this structure:
 
 ```
 your-project/
 ├── README.md                    # Your project readme (with docs markers)
 └── docs/
-    ├── config.yaml              # Page configuration
-    ├── theme.css                # Color overrides (optional)
-    ├── sections/
-    │   ├── hero.html            # Hero section
-    │   ├── highlights.html      # Feature highlights
-    │   ├── demo.html            # Demo video (optional)
-    │   ├── quick-start.html     # Installation & usage
-    │   └── footer.html          # Page footer
-    └── assets/
-        ├── demo.webm            # Demo video (optional)
-        └── demo.mp4             # Safari fallback (optional)
+    └── pages/
+        ├── config.yaml              # Page configuration
+        ├── theme.css                # Color overrides (optional)
+        ├── sections/
+        │   ├── hero.html            # Hero section
+        │   ├── highlights.html      # Feature highlights
+        │   ├── demo.html            # Demo video (optional)
+        │   ├── quick-start.html     # Installation & usage
+        │   └── footer.html          # Page footer
+        └── assets/
+            ├── demo.webm            # Demo video (optional)
+            └── demo.mp4             # Safari fallback (optional)
 ```
 
 The rest of this guide walks through each of these files.
@@ -91,14 +92,14 @@ The `sections` array controls what appears on the page and in what order. Each e
 | Property | Required | Description |
 |----------|----------|-------------|
 | `id` | Yes | Unique identifier, used for `#anchor` links |
-| `file` | No* | Path to HTML file (relative to docs/) |
+| `file` | No* | Path to HTML file (relative to docs/pages/) |
 | `source` | No* | Special source — currently only `readme` is supported |
 | `nav` | Yes | `true` to show in navbar, `false` to hide |
 | `nav_label` | If nav=true | Text shown in the navbar link |
 
 \*Either `file` or `source` must be specified.
 
-Sections with `file:` load an HTML snippet from your `docs/` directory. Sections with `source: readme` extract content from your project's README.md (see [README.md Markers](#readmemd-markers) below).
+Sections with `file:` load an HTML snippet from your `docs/pages/` directory. Sections with `source: readme` extract content from your project's README.md (see [README.md Markers](#readmemd-markers) below).
 
 ### Navbar buttons (optional)
 
@@ -142,7 +143,7 @@ imprint:
 
 ## Writing Section Content
 
-Each section is a standalone HTML file in `docs/sections/`. You don't need a full HTML document — just the section markup. The generator wraps everything in a complete page structure for you.
+Each section is a standalone HTML file in `docs/pages/sections/`. You don't need a full HTML document — just the section markup. The generator wraps everything in a complete page structure for you.
 
 The examples below show the typical sections. You can add, remove, or reorder them freely by changing the `sections` array in `config.yaml`.
 
@@ -151,14 +152,14 @@ The examples below show the typical sections. You can add, remove, or reorder th
 The hero is the first thing visitors see — project name, tagline, and call-to-action buttons.
 
 ```html
-<section id="hero" class="hero section">
+<section id="hero" class="hero">
   <div class="container text-center">
     <h1>Your Project</h1>
     <p class="hero-tagline">A short, catchy tagline</p>
-    <p class="hero-description text-muted">
+    <p class="hero-tagline text-muted">
       A longer description of what your project does.
     </p>
-    <div class="hero-buttons">
+    <div class="hero-actions">
       <a href="#quickstart" class="btn btn-primary">Get Started</a>
       <a href="https://github.com/user/repo" class="btn btn-secondary">
         View on GitHub
@@ -173,7 +174,7 @@ The hero is the first thing visitors see — project name, tagline, and call-to-
 Three feature cards in a grid. Good for communicating key value props at a glance.
 
 ```html
-<section id="highlights" class="highlights section">
+<section id="highlights" class="highlights">
   <div class="container">
     <div class="grid grid-3">
       <div class="feature-box">
@@ -200,17 +201,17 @@ A demo video, optionally wrapped in a macOS-style terminal frame. Skip this sect
 With terminal frame:
 
 ```html
-<section id="demo" class="demo section bg-alt">
+<section id="demo" class="demo">
   <div class="container">
     <div class="macos-window">
-      <div class="macos-titlebar">
-        <div class="macos-buttons">
-          <span class="macos-btn close"></span>
-          <span class="macos-btn minimize"></span>
-          <span class="macos-btn maximize"></span>
+      <div class="macos-window-titlebar">
+        <div class="macos-window-buttons">
+          <span class="macos-window-button close"></span>
+          <span class="macos-window-button minimize"></span>
+          <span class="macos-window-button maximize"></span>
         </div>
       </div>
-      <div class="macos-content">
+      <div class="macos-window-content">
         <video autoplay loop muted playsinline>
           <source src="assets/demo.webm" type="video/webm">
           <source src="assets/demo.mp4" type="video/mp4">
@@ -224,7 +225,7 @@ With terminal frame:
 Without the frame:
 
 ```html
-<section id="demo" class="demo section bg-alt">
+<section id="demo" class="demo">
   <div class="container">
     <video autoplay loop muted playsinline class="demo-video">
       <source src="assets/demo.webm" type="video/webm">
@@ -239,8 +240,8 @@ Without the frame:
 Installation instructions with tabbed variants (e.g., Homebrew vs. Cargo vs. binary download). Tabs are wired up automatically — just use matching `data-tab` attributes on buttons and panels. The first tab should have the `active` class on both its button and panel.
 
 ```html
-<section id="quickstart" class="section">
-  <div class="container content-narrow">
+<section id="quickstart" class="quickstart">
+  <div class="container">
     <h2>Quick Start</h2>
 
     <div class="tabs">
@@ -335,7 +336,7 @@ The markers must be on their own lines. Only content between them is extracted �
 
 ## Customizing the Theme
 
-With your content in place, the next step is making it look right. The generator ships with a dark theme by default. To customize it, create a `theme.css` in your `docs/` directory. You only need to include the variables you want to override — the generator merges your file with the base theme.
+With your content in place, the next step is making it look right. The generator ships with a dark theme by default. To customize it, create a `theme.css` in your `docs/pages/` directory. You only need to include the variables you want to override — the generator merges your file with the base theme.
 
 ### Quick start: changing colors
 
@@ -442,8 +443,8 @@ For fine-grained control, here is the complete set of variables and their defaul
 
 ```css
 :root {
-  --font-sans: system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
 ```
 
@@ -464,7 +465,7 @@ For fine-grained control, here is the complete set of variables and their defaul
 
 ```css
 :root {
-  --container-max: 1100px;
+  --container-max: 900px;
   --border-radius: 8px;
   --border-radius-lg: 12px;
   --transition-fast: 150ms ease;
@@ -474,11 +475,11 @@ For fine-grained control, here is the complete set of variables and their defaul
 
 ## Running the Generator
 
-Once your `docs/` directory is set up, run the generator to produce your site.
+Once your `docs/pages/` directory is set up, run the generator to produce your site.
 
 ```bash
 bun run generator/bin/generate.ts \
-  --docs ./docs \
+  --docs ./docs/pages \
   --readme ./README.md \
   --output ./dist \
   --templates /path/to/project-page-starter/templates
@@ -488,7 +489,7 @@ bun run generator/bin/generate.ts \
 
 | Option | Short | Required | Description |
 |--------|-------|----------|-------------|
-| `--docs` | `-d` | Yes | Path to your docs/ directory |
+| `--docs` | `-d` | Yes | Path to your docs/pages/ directory |
 | `--readme` | `-r` | Yes | Path to your project's README.md |
 | `--output` | `-o` | Yes | Output directory for the generated site |
 | `--templates` | `-t` | Yes | Path to the project-page-starter templates/ directory |
@@ -503,7 +504,7 @@ dist/
 ├── styles/
 │   └── styles.css               # Single bundled CSS file
 └── assets/
-    └── (copied from docs/assets/)
+    └── (copied from docs/pages/assets/)
 ```
 
 All CSS from the templates is bundled into a single `styles.css` via LightningCSS. The output is a self-contained static site — open `dist/index.html` in a browser to preview.
@@ -524,7 +525,7 @@ on:
     branches: [main]
     paths:
       - 'README.md'
-      - 'docs/**'
+      - 'docs/pages/**'
 
 permissions:
   contents: read
@@ -555,13 +556,10 @@ jobs:
       - name: Generate pages
         run: |
           bun run generator/generator/bin/generate.ts \
-            --docs project/docs \
+            --docs project/docs/pages \
             --readme project/README.md \
             --output dist \
             --templates generator/templates
-
-      - name: Copy project assets
-        run: cp -r project/docs/assets/* dist/assets/ 2>/dev/null || true
 
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
@@ -596,9 +594,6 @@ The templates provide a set of CSS classes you can use in your section HTML file
 ### Layout
 
 - `.container` — Centered container with max-width
-- `.content-narrow` — Narrower content width for readability
-- `.section` — Standard section padding
-- `.bg-alt` — Alternating background color
 
 ### Grid
 
@@ -622,21 +617,21 @@ The templates provide a set of CSS classes you can use in your section HTML file
 - `.feature-box` — Feature card with hover effect
 - `.code-block` — Code block wrapper
 - `.tabs`, `.tab-button`, `.tab-panel` — Tabbed interface
-- `.macos-window`, `.macos-titlebar`, `.macos-content` — macOS window frame
+- `.macos-window`, `.macos-window-titlebar`, `.macos-window-buttons`, `.macos-window-button`, `.macos-window-content`, `.macos-window-title` — macOS window frame
 
 ### Spacing
 
-- `.mt-xs` through `.mt-2xl` — Margin top
-- `.mb-xs` through `.mb-2xl` — Margin bottom
-- `.py-xs` through `.py-2xl` — Padding vertical
-- `.px-xs` through `.px-2xl` — Padding horizontal
+- `.mt-0`, `.mt-sm`, `.mt-md`, `.mt-lg`, `.mt-xl` — Margin top
+- `.mb-0`, `.mb-sm`, `.mb-md`, `.mb-lg`, `.mb-xl` — Margin bottom
+- `.py-sm`, `.py-md`, `.py-lg`, `.py-xl`, `.py-2xl` — Padding vertical
+- `.px-sm`, `.px-md`, `.px-lg` — Padding horizontal
 
 ### Responsive breakpoints
 
 | Breakpoint | Width | Changes |
 |------------|-------|---------|
-| Mobile | < 640px | Single column, smaller hero text, hero logo scales down |
-| Tablet | < 768px | Hidden nav links, stacked highlights, single-column tabs |
+| Mobile | < 640px | Single column, smaller hero text, hero logo scales down, single-column tabs |
+| Tablet | < 768px | Hidden nav links, stacked highlights |
 | Desktop | > 768px | Full layout with all features visible |
 
 ## Syntax Highlighting
@@ -689,7 +684,7 @@ If your project has a CLI, a terminal recording makes a great demo section. The 
 ```bash
 cd vhs
 vhs demo.tape
-cp demo.webm demo.mp4 ../docs/assets/
+cp demo.webm demo.mp4 ../docs/pages/assets/
 ```
 
 ### Retina display
@@ -739,16 +734,21 @@ To prevent scraping of contact information from your repository, email and phone
 Use this Node.js script to generate the encrypted values:
 
 ```javascript
+function rot13(str) {
+  return str.replace(/[a-zA-Z]/g, char => {
+    const code = char.charCodeAt(0);
+    const base = code >= 65 && code <= 90 ? 65 : 97;
+    return String.fromCharCode((code - base + 13) % 26 + base);
+  });
+}
+
 function encrypt(text, key) {
+  const rot13Key = rot13(key);
   let result = '';
   for (let i = 0; i < text.length; i++) {
-    const charCode = text.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-    result += String.fromCharCode(charCode);
+    result += String.fromCharCode(text.charCodeAt(i) ^ rot13Key.charCodeAt(i % rot13Key.length));
   }
-  // ROT13 the result
-  return result.replace(/[a-zA-Z]/g, c =>
-    String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26)
-  );
+  return btoa(result);
 }
 
 const key = 'your-secret-key';
@@ -776,10 +776,10 @@ If you have an existing landing page built from an earlier version of this proje
 
 1. **Add README markers** — Find your documentation content and add it to your README.md between `<!-- docs:start -->` / `<!-- docs:end -->` markers.
 
-2. **Create docs/ structure**
+2. **Create docs/pages/ structure**
 
    ```bash
-   mkdir -p docs/sections docs/assets
+   mkdir -p docs/pages/sections docs/pages/assets
    ```
 
 3. **Create config.yaml** — Extract project name, tagline, GitHub URL, and author information.
@@ -793,7 +793,7 @@ If you have an existing landing page built from an earlier version of this proje
    - Quick Start → `sections/quick-start.html`
    - Footer → `sections/footer.html`
 
-6. **Copy assets** — Move demo videos and images to `docs/assets/`.
+6. **Copy assets** — Move demo videos and images to `docs/pages/assets/`.
 
 7. **Add GitHub Actions workflow** — Copy the workflow from the [GitHub Actions](#github-actions) section.
 
@@ -801,7 +801,7 @@ If you have an existing landing page built from an earlier version of this proje
 
    ```bash
    bun run generator/bin/generate.ts \
-     --docs ./docs \
+     --docs ./docs/pages \
      --readme ./README.md \
      --output ./test-dist \
      --templates /path/to/project-page-starter/templates
@@ -826,7 +826,7 @@ Check that the `--templates` path points to the correct directory containing the
 
 ### Images/videos not showing
 
-Ensure assets are in `docs/assets/` and referenced with relative paths like `assets/demo.webm`.
+Ensure assets are in `docs/pages/assets/` and referenced with relative paths like `assets/demo.webm`.
 
 ### Syntax highlighting not working
 

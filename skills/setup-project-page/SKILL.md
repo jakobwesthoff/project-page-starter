@@ -1,13 +1,13 @@
 ---
 name: setup-project-page
 description: >-
-  Set up docs/ directory and files to generate a project landing page with
+  Set up docs/pages/ directory and files to generate a project landing page with
   project-page-starter. Use when adding a landing page to a project.
 ---
 
 # Setup Project Page
 
-This skill scaffolds a landing page using the [project-page-starter](https://github.com/jakobwesthoff/project-page-starter) generator. It creates a complete `docs/` directory structure, configuration, theme, HTML sections, README markers, and optionally a GitHub Actions workflow. The generator repository at <https://github.com/jakobwesthoff/project-page-starter> is the single source of truth for templates, CSS, and the build pipeline.
+This skill scaffolds a landing page using the [project-page-starter](https://github.com/jakobwesthoff/project-page-starter) generator. It creates a complete `docs/pages/` directory structure, configuration, theme, HTML sections, README markers, and optionally a GitHub Actions workflow. The generator repository at <https://github.com/jakobwesthoff/project-page-starter> is the single source of truth for templates, CSS, and the build pipeline.
 
 ## Execution Sequence
 
@@ -34,22 +34,22 @@ Present the extracted information and ask the user to confirm or adjust:
 ### 3. Create directory structure
 
 ```
-docs/
-docs/sections/
-docs/assets/
+docs/pages/
+docs/pages/sections/
+docs/pages/assets/
 ```
 
-### 4. Create `docs/config.yaml`
+### 4. Create `docs/pages/config.yaml`
 
 See [references/config.md](references/config.md) for schema, fields, and examples.
 
-### 5. Create `docs/theme.css`
+### 5. Create `docs/pages/theme.css`
 
 See [references/theme-and-readme.md](references/theme-and-readme.md) for CSS variable overrides.
 
 ### 6. Create HTML section files
 
-Create each file in `docs/sections/`. See [references/sections.md](references/sections.md) for complete templates and CSS class reference.
+Create each file in `docs/pages/sections/`. See [references/sections.md](references/sections.md) for complete templates and CSS class reference.
 
 Standard sections in order:
 1. `sections/hero.html` — project name, tagline, CTA buttons

@@ -2,7 +2,8 @@
 
 import nunjucks from "nunjucks";
 import { parseArgs } from "util";
-import { join } from "path";
+import { join, relative } from "path";
+import { readdir } from "fs/promises";
 import { loadConfig, type Config } from "../lib/config";
 import { extractDocs } from "../lib/readme";
 import { renderMarkdown } from "../lib/markdown";
@@ -234,7 +235,6 @@ async function writeOutput(
   // Ensure output directories exist
   await Bun.write(join(paths.output, ".gitkeep"), "");
   await Bun.write(join(paths.output, "styles", ".gitkeep"), "");
-  await Bun.write(join(paths.output, "assets", ".gitkeep"), "");
 
   log("index.html");
   await Bun.write(join(paths.output, "index.html"), rendered.indexHtml);
@@ -258,7 +258,61 @@ async function writeOutput(
 }
 
 /**
- * Print a summary of generated files and a reminder to copy project assets.
+ * Recursively collect all file paths under a directory.
+ */
+async function collectFiles(dir: string): Promise<string[]> {
+  const files: string[] = [];
+
+  let entries: Awaited<ReturnType<typeof readdir>>;
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch {
+    return files;
+  }
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await collectFiles(fullPath)));
+    } else {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
+/**
+ * Copy project assets from the docs assets directory to the output assets
+ * directory. Skips .gitkeep files. Silently skips if the source directory
+ * does not exist or is empty.
+ */
+async function copyAssets(
+  { log }: StepLogger,
+  { paths }: GeneratorContext,
+): Promise<void> {
+  const srcDir = join(paths.docs, "assets");
+  const destDir = join(paths.output, "assets");
+
+  const files = await collectFiles(srcDir);
+
+  for (const srcPath of files) {
+    const relPath = relative(srcDir, srcPath);
+
+    // Skip .gitkeep files
+    if (relPath === ".gitkeep" || relPath.endsWith("/.gitkeep")) {
+      continue;
+    }
+
+    const destPath = join(destDir, relPath);
+    const content = await Bun.file(srcPath).arrayBuffer();
+    await Bun.write(destPath, content);
+    log(`assets/${relPath}`);
+  }
+}
+
+/**
+ * Print a summary of generated files.
  */
 function printSummary(
   { paths }: GeneratorContext,
@@ -271,9 +325,7 @@ function printSummary(
   if (rendered.imprintHtml) {
     console.log("  imprint.html");
   }
-  console.log(
-    "\nNote: Copy your assets (demo videos, etc.) from docs/assets/ to output/assets/",
-  );
+  console.log("  assets/");
 }
 
 // --- Setup & CLI ---
@@ -346,6 +398,8 @@ async function main() {
   await step("Writing output", (log, ctx) =>
     writeOutput(log, ctx, final),
   );
+
+  await step("Copying assets", copyAssets);
 
   printSummary(ctx, rendered);
 }

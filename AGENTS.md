@@ -16,11 +16,11 @@ bun run generator/bin/generate.ts \
 
 | Task | File(s) |
 |------|---------|
-| Project metadata | `docs/config.yaml` |
-| Theme colors | `docs/theme.css` (overrides only) |
+| Project metadata | `docs/pages/config.yaml` |
+| Theme colors | `docs/pages/theme.css` (overrides only) |
 | Base theme defaults | `templates/styles/theme.css` |
-| Page sections | `docs/sections/*.html` |
-| Section order & nav | `docs/config.yaml` → `sections` array |
+| Page sections | `docs/pages/sections/*.html` |
+| Section order & nav | `docs/pages/config.yaml` → `sections` array |
 | Documentation content | Project `README.md` (between `<!-- docs:start -->` / `<!-- docs:end -->`) |
 | Templates | `templates/*.njk` |
 | CSS components/layout | `templates/styles/*.css` |
@@ -58,11 +58,14 @@ imprint:                    # Optional
   address: |
     Street 123
     12345 City
+  email_encrypted: "base64-encrypted-email"
+  phone_encrypted: "base64-encrypted-phone"
+  encryption_key: "rot13-encoded-key"
 ```
 
 ## Section Sources
 
-- **`file:`** — Path to HTML file relative to docs/ (e.g., `sections/hero.html`)
+- **`file:`** — Path to HTML file relative to docs/pages/ (e.g., `sections/hero.html`)
 - **`source: readme`** — Extracts content between `<!-- docs:start -->` / `<!-- docs:end -->` markers in README.md
 
 ## Key CSS Variables
@@ -91,22 +94,26 @@ Shiki with `github-dark` theme, built at compile time. Supported languages:
 
 Replaced at build time with inline SVGs from `templates/icons/`. Available: `github`, `download`.
 
+## Claude Code Skill
+
+This project provides a `/setup-project-page` Claude Code skill (defined in `skills/setup-project-page/SKILL.md`) that automates setting up a landing page in another project. It analyzes the target project, extracts metadata, and scaffolds the full `docs/pages/` directory structure including config, theme, sections, README markers, and an optional GitHub Actions workflow.
+
 ## Common Tasks
 
 | Task | How |
 |------|-----|
-| Change primary color | Edit `docs/theme.css` — set `--color-primary` and `--color-primary-hover` |
-| Add a section | Create HTML file in `docs/sections/`, add entry to `sections` in `config.yaml` |
+| Change primary color | Edit `docs/pages/theme.css` — set `--color-primary` and `--color-primary-hover` |
+| Add a section | Create HTML file in `docs/pages/sections/`, add entry to `sections` in `config.yaml` |
 | Add navbar button | Add entry to `navbar_buttons` in `config.yaml` |
 | Change favicon | Automatic — generated from `--color-primary` and `--color-primary-hover` |
 | Add CSS classes | Use classes from `templates/styles/` — see [GUIDE.md](GUIDE.md#css-classes-reference) |
 
 ## Validation Checklist
 
-- [ ] `config.yaml` has `name`, `tagline`, `github`, `author`
-- [ ] All `file:` paths in sections exist under `docs/`
+- [ ] `config.yaml` has `name`, `github`, `sections`
+- [ ] All `file:` paths in sections exist under `docs/pages/`
 - [ ] README.md contains `<!-- docs:start -->` and `<!-- docs:end -->` markers
 - [ ] `theme.css` color values are valid hex (required for favicon generation)
 - [ ] Code blocks in README specify a supported language tag
-- [ ] Assets referenced in sections exist in `docs/assets/`
-- [ ] Generator runs without errors: `bun run generator/bin/generate.ts --docs ./docs --readme ./README.md --output ./dist --templates /path/to/templates`
+- [ ] Assets referenced in sections exist in `docs/pages/assets/`
+- [ ] Generator runs without errors: `bun run generator/bin/generate.ts --docs ./docs/pages --readme ./README.md --output ./dist --templates /path/to/templates`

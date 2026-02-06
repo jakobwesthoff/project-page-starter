@@ -14,7 +14,6 @@ HTML section templates and CSS classes for the [project-page-starter](https://gi
 - The outermost element needs an `id` matching the section's `id` in config.yaml (except hero which uses its class)
 - Each section type has its own CSS class that provides spacing — do NOT add `class="section"` alongside these
 - Wrap content in `.container` for centered, max-width layout
-- Use `.content-narrow` inside `.container` for narrower reading width (quickstart sections)
 
 ## hero.html
 
@@ -120,7 +119,7 @@ A demo video wrapped in a macOS-style terminal frame. Skip this section entirely
 - `.macos-window-title` — centered title text in titlebar
 - `.macos-window-content` — content area (video fills width)
 
-**Video sources:** Always provide both `.webm` (primary) and `.mp4` (Safari fallback). Videos go in `docs/assets/`.
+**Video sources:** Always provide both `.webm` (primary) and `.mp4` (Safari fallback). Videos go in `docs/pages/assets/`.
 
 ## quick-start.html
 
@@ -233,7 +232,6 @@ Page footer with tagline, credit line, and optional imprint link.
 | Class | Purpose |
 |-------|---------|
 | `.container` | Centered max-width wrapper |
-| `.content-narrow` | Narrower content width |
 | `.bg-alt` | Alternate background color |
 
 ### Section Types (use instead of `.section`)

@@ -1,6 +1,6 @@
 ---
 name: config-reference
-description: Schema and examples for docs/config.yaml
+description: Schema and examples for docs/pages/config.yaml
 tags: [config, yaml, sections, navbar]
 ---
 
@@ -117,7 +117,7 @@ sections:
 
 - Each section MUST have either `file` or `source`, NEVER both
 - `source: readme` is the **only** supported source value
-- `file` paths are relative to the `docs/` directory (e.g. `sections/hero.html`)
+- `file` paths are relative to the `docs/pages/` directory (e.g. `sections/hero.html`)
 - If `nav: true`, then `nav_label` is required (the text shown in the navbar)
 - If `nav: false`, `nav_label` is ignored
 - The `id` is used as the `#anchor` in the URL and must be unique

@@ -20,21 +20,28 @@ It started as a set of static HTML and CSS files that I would copy between proje
 
 ## Quick Start
 
+### Using the Claude Code Skill
+
+If you use [Claude Code](https://claude.ai/), the fastest way to set up a landing page in your project is the `/setup-project-page` skill. It analyzes your project, extracts metadata from your README and package manifest, and scaffolds the entire `docs/pages/` directory — including config, theme, HTML sections, README markers, and optionally a GitHub Actions workflow.
+
+### Manual Setup
+
 ### 1. Create the docs structure in your project
 
 ```
 your-project/
 ├── README.md
 └── docs/
-    ├── config.yaml
-    ├── theme.css
-    ├── sections/
-    │   ├── hero.html
-    │   ├── highlights.html
-    │   ├── quick-start.html
-    │   └── footer.html
-    └── assets/
-        └── (demo videos, images)
+    └── pages/
+        ├── config.yaml
+        ├── theme.css
+        ├── sections/
+        │   ├── hero.html
+        │   ├── highlights.html
+        │   ├── quick-start.html
+        │   └── footer.html
+        └── assets/
+            └── (demo videos, images)
 ```
 
 ### 2. Add markers to your README.md
@@ -55,7 +62,7 @@ in the Documentation section of your landing page.
 
 ```bash
 bun run generator/bin/generate.ts \
-  --docs ./docs \
+  --docs ./docs/pages \
   --readme ./README.md \
   --output ./dist \
   --templates /path/to/project-page-starter/templates
