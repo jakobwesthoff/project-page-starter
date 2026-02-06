@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-bright);
   font-weight: 600;
   line-height: 1.25;
+  margin-top: var(--space-lg);
   margin-bottom: var(--space-md);
 }
 
@@ -69,12 +70,13 @@ code {
 
 pre {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 1em;
   line-height: 1.7;
   overflow-x: auto;
 }
 
 pre code {
+  font-size: inherit;
   background: none;
   padding: 0;
 }

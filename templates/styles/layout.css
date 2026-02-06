@@ -257,17 +257,13 @@
   margin-bottom: var(--space-md);
 }
 
-.docs h3:first-of-type {
-  margin-top: 0;
-}
-
 .docs p {
   color: var(--color-text-muted);
 }
 
 .docs .code-block + p,
-.docs .code-block + h3,
-.docs .code-block + h4 {
+.docs .callout-box + p,
+.docs .docs-table + p {
   margin-top: var(--space-lg);
 }
 

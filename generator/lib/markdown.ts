@@ -21,6 +21,23 @@ export async function renderMarkdown(markdown: string): Promise<string> {
     return `<div class="docs-table"><table class="table"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
   };
 
+  // GitHub-style alerts: > [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], > [!CAUTION]
+  // Rendered as .callout-box divs (warning/caution get .callout-warning variant)
+  const alertPattern = /^<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\n?/i;
+  const warningTypes = new Set(["WARNING", "CAUTION"]);
+
+  renderer.blockquote = function(quote: string): string {
+    const match = quote.match(alertPattern);
+    if (match) {
+      const alertType = match[1].toUpperCase();
+      const isWarning = warningTypes.has(alertType);
+      const cssClass = isWarning ? "callout-box callout-warning" : "callout-box";
+      const content = quote.replace(alertPattern, "<p>");
+      return `<div class="${cssClass}">${content}</div>`;
+    }
+    return `<blockquote>${quote}</blockquote>`;
+  };
+
   const md = new Marked({ renderer });
 
   // First pass: render markdown to HTML with placeholder code blocks
