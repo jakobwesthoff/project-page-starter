@@ -263,12 +263,9 @@ async function writeOutput(
 async function collectFiles(dir: string): Promise<string[]> {
   const files: string[] = [];
 
-  let entries: Awaited<ReturnType<typeof readdir>>;
-  try {
-    entries = await readdir(dir, { withFileTypes: true });
-  } catch {
-    return files;
-  }
+  // Inferring the type from the call keeps the correct `withFileTypes`
+  // overload; a missing directory simply yields no entries.
+  const entries = await readdir(dir, { withFileTypes: true }).catch(() => []);
 
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
