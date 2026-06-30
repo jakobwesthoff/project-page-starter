@@ -43,18 +43,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout your project
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: project
 
       # Checkout the generator
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: jakobwesthoff/project-page-starter
           path: generator
 
       # Setup Bun
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
 
       # Install generator dependencies
       - name: Install dependencies
@@ -75,11 +75,11 @@ jobs:
 
       # Setup GitHub Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       # Upload artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -92,7 +92,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
 ## Post-Setup
