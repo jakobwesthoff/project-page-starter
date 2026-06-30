@@ -4,7 +4,7 @@ import { escapeHtml } from "./escape";
 
 let highlighter: Highlighter | null = null;
 
-const SUPPORTED_LANGS = ["bash", "json", "yaml", "toml", "typescript", "javascript", "rust", "go", "shell", "sh", "zsh"];
+const SUPPORTED_LANGS = ["bash", "json", "yaml", "toml", "typescript", "javascript", "rust", "go", "shell", "sh", "zsh", "lua"];
 
 async function getHighlighter(): Promise<Highlighter> {
   if (!highlighter) {
