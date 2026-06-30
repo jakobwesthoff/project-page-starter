@@ -13,6 +13,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offset anchor jumps by the fixed navbar (64px) plus a small buffer so the
+     target heading or section lands below it instead of behind it. */
+  scroll-padding-top: 5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,4 +1,5 @@
 import { marked, Marked } from "marked";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 import { highlightHtmlCodeBlocks } from "./highlighting";
 import { escapeHtml } from "./escape";
 
@@ -39,6 +40,13 @@ export async function renderMarkdown(markdown: string): Promise<string> {
   };
 
   const md = new Marked({ renderer });
+
+  // Assign GitHub-compatible id slugs to headings (e.g. `## Query language` ->
+  // `<h2 id="query-language">`). README anchor links are authored against
+  // GitHub's slugging, so this extension (backed by github-slugger) makes those
+  // in-document cross-references resolve. A fresh instance per render keeps the
+  // duplicate-slug counter scoped to a single document.
+  md.use(gfmHeadingId());
 
   // First pass: render markdown to HTML with placeholder code blocks
   let html = await md.parse(markdown);
